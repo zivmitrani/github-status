@@ -5,9 +5,8 @@ import (
 	"fmt"
 )
 
-func GetStatus(url string) (*Status, error) {
-	url := url
-	response := httpget(url)
+func GetStatus(urlCheck string) (*Status, error) {
+	response := httpget(urlCheck)
 
 	// For Debugging:
 	fmt.Println(string(response))
@@ -26,4 +25,11 @@ func GetStatus(url string) (*Status, error) {
 func httpget(url string) []byte {
 	fmt.Println(url)
 	return []byte(mockData)
+}
+
+func main() {
+	fmt.Println("Hello, World!")
+
+	status, _ := GetStatus("https://www.githubstatus.com/api/v2/status.json")
+	fmt.Println(status)
 }
